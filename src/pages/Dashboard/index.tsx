@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
-import Header from "../../components/Header";
+import { Header } from "../../components/Header";
 import api from "../../services/api";
-import Food from "../../components/Food";
+import { Food } from "../../components/Food";
 import ModalAddFood from "../../components/ModalAddFood";
 import ModalEditFood from "../../components/ModalEditFood";
 import { FoodsContainer } from "./styles";
 import { useEffect } from "react";
-import { FoodProps } from "../../types";
+import { FoodType } from "../../types";
 
 export function Dashboard() {
 
-  const [foods, setFoods] = useState<FoodProps[]>([]);
-  const [editingFood, setEditingFood] = useState({} as FoodProps);
+  const [foods, setFoods] = useState<FoodType[]>([]);
+  const [editingFood, setEditingFood] = useState({} as FoodType);
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -67,7 +67,7 @@ export function Dashboard() {
     setEditModalOpen(!editModalOpen);
   };
 
-  function handleEditFood(food: FoodProps) {
+  function handleEditFood(food: FoodType) {
     setEditingFood(food);
     setEditModalOpen(true);
   };
