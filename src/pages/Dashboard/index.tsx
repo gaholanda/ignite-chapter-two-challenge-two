@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 import Header from "../../components/Header";
 import api from "../../services/api";
