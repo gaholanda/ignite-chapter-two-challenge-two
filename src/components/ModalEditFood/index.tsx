@@ -5,27 +5,20 @@ import { Form } from "./styles";
 import { Modal } from "../Modal";
 import { Input } from "../Input";
 import { FormHandles } from "@unform/core";
-import { FoodType } from "../../types";
-
+import { FoodData, FoodType } from "../../types";
 interface ModalEditFoodProps {
   isOpen: boolean;
   editingFood: FoodType;
   setIsOpen: (event?: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => void;
-  handleUpdateFood: (food: FoodType) => void;
+  handleUpdateFood: (food: FoodData) => void;
 }
 
 export function ModalEditFood({ isOpen, editingFood, setIsOpen, handleUpdateFood }: ModalEditFoodProps) {
   const formRef = createRef<FormHandles>();
 
-  function handleSubmit(data: FormData) {
-    handleUpdateFood({
-      id: new Date().getTime(),
-      available: true,
-      description: `${data.get("description")}`,
-      image: `${data.get("image")}`,
-      name:  `${data.get("name")}`,
-      price: Number(data.get("price")),
-    });
+  function handleSubmit(data: FoodData) {
+    console.log(data);
+    handleUpdateFood(data);
     setIsOpen();
   }
 

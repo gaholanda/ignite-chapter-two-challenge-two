@@ -7,7 +7,7 @@ import { ModalAddFood } from "../../components/ModalAddFood";
 import {ModalEditFood} from "../../components/ModalEditFood";
 import { FoodsContainer } from "./styles";
 import { useEffect } from "react";
-import { FoodType } from "../../types";
+import { FoodData, FoodType } from "../../types";
 
 export function Dashboard() {
 
@@ -24,11 +24,12 @@ export function Dashboard() {
     loadFoods();
   }, [])
 
-  async function handleAddFood(food: FoodType) {
+  async function handleAddFood(food: FoodData) {
     try {
       const response = await api.post("/foods", {
         ...food,
         available: true,
+        id: new Date().getTime()
       });
       setFoods([...foods, response.data]);
     } catch (err) {
